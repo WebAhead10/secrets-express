@@ -1,0 +1,19 @@
+BEGIN;
+-- DROP TABLE IF EXISTS;
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    fullname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    date DATE DEFAULT CURRENT_DATE
+);
+
+CREATE TABLE secrets (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    content VARCHAR(255) NOT NULL,
+    date DATE DEFAULT CURRENT_DATE
+);
+
+
+COMMIT;
